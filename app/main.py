@@ -31,5 +31,7 @@ def main():
             if command == "type":
                 if arg in d.keys():
                     print(f"{arg} is a shell {d.get(arg)}")
+                else: 
+                    print(f"{arg}: not found")
 if __name__ == "__main__":
     main()
