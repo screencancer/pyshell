@@ -10,7 +10,7 @@ def checkValidCommand(command):
     #print(command[0], d.values())
     if command[0] in d.keys():
         return True, command[0], command[1]
-    else:None
+    else:
         return False, command, None
 
 def main():
