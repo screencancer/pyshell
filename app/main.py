@@ -1,10 +1,21 @@
+import os
 import sys
+from tabnanny import check
 d = {
     "exit": "builtin" ,
     "echo": "builtin",
     "type": "builtin"
 }
 
+def checkPath(path):
+    directories = str(path).split(":")
+    print(directories)
+    for dirs in directories:
+        listTest = os.listdir(dirs)
+        for file in listTest:
+            if file in d.keys():
+                return dirs
+    return "invalid"
 def checkValidCommand(command):
     command = str(command).split(" ", 1)
     #print(command)
@@ -15,6 +26,7 @@ def checkValidCommand(command):
         return False, command[0], None
 
 def main():
+    path = sys.path
     exit = False
     # Wait for user input
     while True:
@@ -31,6 +43,8 @@ def main():
             if command == "type":
                 if arg in d.keys():
                     print(f"{arg} is a shell {d.get(arg)}")
+                elif not checkPath(path) == "invalid":
+                    print(f"{arg} is {path}/{arg}")
                 else: 
                     print(f"{arg}: not found")
 if __name__ == "__main__":
