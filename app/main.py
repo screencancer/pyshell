@@ -1,7 +1,8 @@
 import sys
 d = {
-    "exit": "valid" ,
-    "echo": "valid"
+    "exit": "builtin" ,
+    "echo": "builtin",
+    "type": "builtin"
 }
 
 def checkValidCommand(command):
@@ -27,6 +28,8 @@ def main():
                 sys.exit(int(arg))
             if command == "echo":
                 sys.stdout.write(arg + "\n")
-
+            if command == "type":
+                if arg in d.keys():
+                    print(f"{arg} is a shell {d.get(arg)}")
 if __name__ == "__main__":
     main()
