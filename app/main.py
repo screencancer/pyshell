@@ -10,9 +10,10 @@ d = {
 
 def checkPath(path):
     directories = str(path).split(":")
-    print(directories)
+    #print(directories)
     for dirs in directories:
         listTest = os.listdir(dirs)
+        #print(dirs, listTest)
         for file in listTest:
             if file in d.keys():
                 return dirs
@@ -28,7 +29,7 @@ def checkValidCommand(command):
 
 def main():
     path = os.environ.get("PATH")
-    print("Path is " , path)
+    #print("Path is " , path)
     exit = False
     # Wait for user input
     while True:
