@@ -11,7 +11,7 @@ def checkValidCommand(command):
     if command[0] in d.keys():
         return True, command[0], command[1]
     else:
-        return False, command, None
+        return False, command[0], None
 
 def main():
     exit = False
