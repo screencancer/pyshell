@@ -28,6 +28,7 @@ def checkValidCommand(command):
 
 def main():
     path = os.environ.get("PATH")
+    print("Path is " , path)
     exit = False
     # Wait for user input
     while True:
