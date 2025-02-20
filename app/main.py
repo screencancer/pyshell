@@ -24,7 +24,7 @@ def main():
             print(f"{command}: command not found")
         else:
             if command == "exit":
-                sys.exit(arg)
+                sys.exit(int(arg))
             if command == "echo":
                 sys.stdout.write(arg + "\n")
 
