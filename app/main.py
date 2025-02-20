@@ -1,6 +1,7 @@
 import os
 import sys
-from tabnanny import check
+import shutil
+
 d = {
     "exit": "builtin" ,
     "echo": "builtin",
@@ -26,7 +27,7 @@ def checkValidCommand(command):
         return False, command[0], None
 
 def main():
-    path = sys.path
+    path = os.environ.get("PATH")
     exit = False
     # Wait for user input
     while True:
