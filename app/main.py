@@ -8,7 +8,7 @@ d = {
 }
 
 
-def checkPath(path):
+def checkPath(path, arg):
     directories = str(path).split(":")
     #print(directories, "all directories")
     for dirs in directories:
@@ -17,7 +17,7 @@ def checkPath(path):
         # print(dirs, listTest)
         for file in listTest:
             # print(file, "file is in ", dirs)
-            if file in d.keys():
+            if file == arg:
                 return dirs
     return "invalid"
 
@@ -48,7 +48,7 @@ def main():
             if command == "echo":
                 sys.stdout.write(arg + "\n")
             if command == "type":
-                newPath = checkPath(path)
+                newPath = checkPath(path, arg)
                 if arg in d.keys():
                     print(f"{arg} is a shell {d.get(arg)}")
                 elif not newPath == "invalid":
