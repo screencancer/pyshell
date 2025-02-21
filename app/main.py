@@ -10,11 +10,12 @@ d = {
 
 def checkPath(path):
     directories = str(path).split(":")
-    print(directories)
+    #print(directories)
     for dirs in directories:
         listTest = os.listdir(dirs)
-        print(dirs, listTest)
+        #print(dirs, listTest)
         for file in listTest:
+            print(file, "file is ")
             if file in d.keys():
                 return dirs
     return "invalid"
