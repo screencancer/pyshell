@@ -10,7 +10,7 @@ d = {
 
 def checkPath(path):
     directories = str(path).split(":")
-    #print(directories)
+    print(directories, "all directories")
     for dirs in directories:
         listTest = os.listdir(dirs)
         #print(dirs, listTest)
