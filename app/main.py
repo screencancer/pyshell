@@ -15,7 +15,7 @@ def checkPath(path):
             listTest = os.listdir(dirs)
         #print(dirs, listTest)
         for file in listTest:
-            print(file, "file is in ", dirs)
+            #print(file, "file is in ", dirs)
             if file in d.keys():
                 return dirs
     return "invalid"
