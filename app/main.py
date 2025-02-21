@@ -10,13 +10,13 @@ d = {
 
 def checkPath(path):
     directories = str(path).split(":")
-    print(directories, "all directories")
+    #print(directories, "all directories")
     for dirs in directories:
         if os.path.exists(dirs):
             listTest = os.listdir(dirs)
         #print(dirs, listTest)
         for file in listTest:
-            print(file, "file is ")
+            #print(file, "file is ")
             if file in d.keys():
                 return dirs
     return "invalid"
@@ -46,10 +46,11 @@ def main():
             if command == "echo":
                 sys.stdout.write(arg + "\n")
             if command == "type":
+                newPath = checkPath(path)
                 if arg in d.keys():
                     print(f"{arg} is a shell {d.get(arg)}")
-                elif not checkPath(path) == "invalid":
-                    print(f"{arg} is {path}/{arg}")
+                elif not newPath == "invalid":
+                    print(f"{arg} is {newPath}/{arg}")
                 else: 
                     print(f"{arg}: not found")
 if __name__ == "__main__":
