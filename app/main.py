@@ -10,7 +10,7 @@ d = {
 
 def checkPath(path):
     directories = str(path).split(":")
-    print(directories, "all directories")
+    #print(directories, "all directories")
     for dirs in directories:
         if os.path.exists(dirs):
             listTest = os.listdir(dirs)
