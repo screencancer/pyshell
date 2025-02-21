@@ -28,7 +28,7 @@ def checkValidCommand(command):
         return False, command[0], None
 
 def main():
-    path = os.environ.get("PATH")
+    path = shutil.which(args[0])
     #print("Path is " , path)
     exit = False
     # Wait for user input
