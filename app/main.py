@@ -12,7 +12,8 @@ def checkPath(path):
     directories = str(path).split(":")
     print(directories, "all directories")
     for dirs in directories:
-        listTest = os.listdir(dirs)
+        if os.path.exists(dirs):
+            listTest = os.listdir(dirs)
         #print(dirs, listTest)
         for file in listTest:
             print(file, "file is ")
