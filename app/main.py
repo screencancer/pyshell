@@ -1,8 +1,7 @@
-from curses import newpad
 import os
 import sys
-from tabnanny import check
 
+#Dictionary of builtin applications to the program
 d = {
     "exit": "builtin",
     "echo": "builtin",
@@ -11,7 +10,7 @@ d = {
     "cd": "builtin"
 }
 
-
+#Check PATH directory for executables if the exe is not in any path it will return invalid.
 def checkPath(path, arg):
     directories = str(path).split(":")
     #print(directories, "all directories")
@@ -25,10 +24,11 @@ def checkPath(path, arg):
                 return dirs
     return "invalid"
 
-
+#Check if the command given is invalid
 def checkValidCommand(path, command):
-    command = str(command).split(" ", 1)
+    command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER?
     # print(command[0], d.values())
+    # Check if command is in builtin dictionary or checkPath doesnt return invalid meaning it is on PATH
     if command[0] in d.keys() and len(command) == 2:
         return True, command[0], command[1]
     elif command[0] in d.keys() and len(command) == 1:
@@ -38,6 +38,7 @@ def checkValidCommand(path, command):
     else:
         return False, command[0], None
 
+#Check if path is valid if so then cd should work
 def checkIfValidDirectory(arg):
     try:
         if arg != "~":
@@ -60,6 +61,7 @@ def main():
             print(f"{command}: command not found")
         else:
             newPath = checkPath(path, command)
+            #potentially make this a function?
             if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
                 #pwd = newPath
