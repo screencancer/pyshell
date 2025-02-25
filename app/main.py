@@ -45,7 +45,7 @@ def main():
         else:
             if checkPath(path, command) != "invalid": 
                 #print(command, "in path ", path)
-                os.startfile(path + command)
+                os.system(path + command)
             if command == "exit":
                 sys.exit(int(arg))
             if command == "echo":
