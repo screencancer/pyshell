@@ -34,7 +34,7 @@ def checkValidCommand(path, command):
     elif command[0] in d.keys() and len(command) == 1:
         return True, command[0], None
     elif len(command) == 2 and checkPath(path, command[0]) != "invalid":
-        return True, command[0], command[1]
+        return True, command[0].replace("'", "").replace('"', ""), command[1]
     else:
         return False, command[0], None
 
