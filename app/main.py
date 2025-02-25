@@ -41,7 +41,6 @@ def checkValidCommand(path, command):
 def checkIfValidDirectory(arg):
     try:
         os.chdir(arg)
-        return arg
     except:
         print(f"cd: {arg}: No such file or directory")
 
@@ -65,7 +64,7 @@ def main():
             elif command == "pwd":
                 print(pwd)
             elif command == "cd":
-                pwd = arg
+                checkIfValidDirectory(arg)
             elif command == "exit":
                 sys.exit(int(arg))
             elif command == "echo":
