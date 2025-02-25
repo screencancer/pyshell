@@ -55,6 +55,7 @@ def main():
         pwd = os.getcwd()
         sys.stdout.write("$ ")
         command = input()
+        command = command.replace("'", "")
         isValid, command, arg = checkValidCommand(path, command)
         if not isValid:
             print(f"{command}: command not found")
@@ -63,7 +64,6 @@ def main():
             if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
                 #pwd = newPath
-                command.replace("'", "")
                 os.system(command + " " + arg)
             elif command == "pwd":
                 print(pwd)
