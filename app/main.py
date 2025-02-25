@@ -26,7 +26,7 @@ def checkPath(path, arg):
 
 def checkValidCommand(path, command):
     command = str(command).split(" ", 1)
-    # print(command)
+    print(command)
     # print(command[0], d.values())
     if command[0] in d.keys():
         return True, command[0], command[1]
