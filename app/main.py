@@ -29,7 +29,7 @@ def checkValidCommand(path, command):
     # print(command[0], d.values())
     if command[0] in d.keys():
         return True, command[0], command[1]
-    elif checkPath(path, command[0]) != "Invalid":
+    elif len(command) == 2 and checkPath(path, command[0]) != "Invalid":
         return True, command[0], command[1]
     else:
         return False, command[0], None
