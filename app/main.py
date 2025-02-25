@@ -9,6 +9,8 @@ d = {
     "pwd": "builtin"
 }
 
+pwd = os.curdir
+
 
 def checkPath(path, arg):
     directories = str(path).split(":")
@@ -42,7 +44,6 @@ def main():
     exit = False
 
     while True:
-        pwd = os.curdir
         sys.stdout.write("$ ")
         command = input()
         isValid, command, arg = checkValidCommand(path, command)
