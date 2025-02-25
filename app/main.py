@@ -23,9 +23,14 @@ def checkPath(path, arg):
             if file == arg:
                 return dirs
     return "invalid"
+    
+def quotationHandler(command):
+    ...
 
 #Check if the command given is invalid
-def checkValidCommand(path, command):
+def checkValidCommand(path, command: str):
+    if command.startswith('"') or command.startswith("'"):
+        command = quotationHandler(command)
     command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER?
     # print(command[0], d.values())
     # Check if command is in builtin dictionary or checkPath doesnt return invalid meaning it is on PATH
