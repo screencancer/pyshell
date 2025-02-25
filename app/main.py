@@ -50,7 +50,7 @@ def main():
     exit = False
 
     while True:
-        pwd = os.getcwd
+        pwd = os.getcwd()
         sys.stdout.write("$ ")
         command = input()
         isValid, command, arg = checkValidCommand(path, command)
