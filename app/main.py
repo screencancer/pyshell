@@ -40,7 +40,7 @@ def main():
         sys.stdout.write("$ ")
         command = input()
         isValid, command, arg = checkValidCommand(command)
-        if not isValid:
+        if not isValid and checkPath(path, command) == "invalid":
             print(f"{command}: command not found")
         else:
             if checkPath(path, command) != "invalid": 
