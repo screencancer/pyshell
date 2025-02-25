@@ -30,9 +30,9 @@ def checkValidCommand(path, command):
     command = str(command).split(" ", 1)
     # print(command[0], d.values())
     if command[0] in d.keys() and len(command) == 2:
-        return True, command[0], command[1]
+        return True, command[0].replace("'", "").replace('"', ""), command[1]
     elif command[0] in d.keys() and len(command) == 1:
-        return True, command[0], None
+        return True, command[0].replace("'", "").replace('"', ""), None
     elif len(command) == 2 and checkPath(path, command[0]) != "invalid":
         return True, command[0].replace("'", "").replace('"', ""), command[1]
     else:
