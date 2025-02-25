@@ -1,5 +1,6 @@
 import os
 import sys
+from tabnanny import check
 
 d = {
     "exit": "builtin",
@@ -22,11 +23,13 @@ def checkPath(path, arg):
     return "invalid"
 
 
-def checkValidCommand(command):
+def checkValidCommand(path, command):
     command = str(command).split(" ", 1)
     # print(command)
     # print(command[0], d.values())
     if command[0] in d.keys():
+        return True, command[0], command[1]
+    elif checkPath(path, command[0]) != "Invalid":
         return True, command[0], command[1]
     else:
         return False, command[0], None
@@ -39,8 +42,8 @@ def main():
     while True:
         sys.stdout.write("$ ")
         command = input()
-        isValid, command, arg = checkValidCommand(command)
-        if not isValid and checkPath(path, command) == "invalid":
+        isValid, command, arg = checkValidCommand(path, command)
+        if not isValid:
             print(f"{command}: command not found")
         else:
             newPath = checkPath(path, command)
