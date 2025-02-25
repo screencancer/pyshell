@@ -39,7 +39,7 @@ def checkValidCommand(path, command):
 
 
 def main():
-    pwd = "app/"
+    pwd = "/app"
     path = os.environ['PATH']
     exit = False
 
