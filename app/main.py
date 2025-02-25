@@ -62,6 +62,7 @@ def main():
                 sys.stdout.write(arg + "\n")
             elif command == "type":
                 newPath = checkPath(path, arg)
+                pwd = newPath
                 if arg in d.keys():
                     print(f"{arg} is a shell {d.get(arg)}")
                 elif not newPath == "invalid":
