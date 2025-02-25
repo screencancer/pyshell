@@ -5,7 +5,8 @@ from tabnanny import check
 d = {
     "exit": "builtin",
     "echo": "builtin",
-    "type": "builtin"
+    "type": "builtin",
+    "pwd": "builtin"
 }
 
 
