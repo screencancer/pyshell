@@ -46,7 +46,7 @@ def main():
             newPath = checkPath(path, command)
             if newPath != "invalid": 
                 #print(command, "in path ", path)
-                os.system(newPath + command)
+                os.system(newPath + "/" + command)
             elif command == "exit":
                 sys.exit(int(arg))
             elif command == "echo":
