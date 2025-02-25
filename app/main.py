@@ -7,7 +7,8 @@ d = {
     "echo": "builtin",
     "type": "builtin",
     "pwd": "builtin",
-    "cd": "builtin"
+    "cd": "builtin",
+    "cat": "builtin"
 }
 
 #Check PATH directory for executables if the exe is not in any path it will return invalid.
@@ -23,7 +24,7 @@ def checkPath(path, arg):
             if file == arg:
                 return dirs
     return "invalid"
-    
+
 def quotationHandler(command):
     ...
 
