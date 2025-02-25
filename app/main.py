@@ -40,7 +40,10 @@ def checkValidCommand(path, command):
 
 def checkIfValidDirectory(arg):
     try:
-        os.chdir(arg)
+        if arg != "~":
+            os.chdir(arg)
+        else: 
+            os.chdir(os.environ['HOME'])
     except:
         print(f"cd: {arg}: No such file or directory")
 
