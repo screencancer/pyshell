@@ -47,11 +47,11 @@ def main():
             if newPath != "invalid": 
                 #print(command, "in path ", path)
                 os.system(newPath + command)
-            if command == "exit":
+            elif command == "exit":
                 sys.exit(int(arg))
-            if command == "echo":
+            elif command == "echo":
                 sys.stdout.write(arg + "\n")
-            if command == "type":
+            elif command == "type":
                 newPath = checkPath(path, arg)
                 if arg in d.keys():
                     print(f"{arg} is a shell {d.get(arg)}")
