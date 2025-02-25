@@ -40,6 +40,7 @@ def main():
     exit = False
 
     while True:
+        pwd = ""
         sys.stdout.write("$ ")
         command = input()
         isValid, command, arg = checkValidCommand(path, command)
@@ -49,7 +50,10 @@ def main():
             newPath = checkPath(path, command)
             if newPath != "invalid": 
                 #print(command, "in path ", path)
+                pwd = newPath
                 os.system(command + " " + arg)
+            elif command == "pwd":
+                print(pwd)
             elif command == "exit":
                 sys.exit(int(arg))
             elif command == "echo":
