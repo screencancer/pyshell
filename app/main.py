@@ -30,11 +30,11 @@ def checkValidCommand(path, command):
     command = str(command).split(" ", 1)
     # print(command[0], d.values())
     if command[0] in d.keys() and len(command) == 2:
-        return True, command[0].replace("'", "").replace('"', ""), command[1]
+        return True, command[0], command[1]
     elif command[0] in d.keys() and len(command) == 1:
-        return True, command[0].replace("'", "").replace('"', ""), None
+        return True, command[0], None
     elif len(command) == 2 and checkPath(path, command[0]) != "invalid":
-        return True, command[0].replace("'", "").replace('"', ""), command[1]
+        return True, command[0], command[1]
     else:
         return False, command[0], None
 
@@ -63,6 +63,7 @@ def main():
             if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
                 #pwd = newPath
+                command.replace("'", "")
                 os.system(command + " " + arg)
             elif command == "pwd":
                 print(pwd)
