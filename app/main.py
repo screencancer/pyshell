@@ -10,8 +10,6 @@ d = {
     "pwd": "builtin"
 }
 
-pwd = "app/"
-
 
 def checkPath(path, arg):
     directories = str(path).split(":")
@@ -41,6 +39,7 @@ def checkValidCommand(path, command):
 
 
 def main():
+    pwd = "app/"
     path = os.environ['PATH']
     exit = False
 
