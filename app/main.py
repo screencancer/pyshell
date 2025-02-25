@@ -44,7 +44,8 @@ def main():
             print(f"{command}: command not found")
         else:
             if checkPath(path, command) != "invalid": 
-                print(command, "in path ", path)
+                #print(command, "in path ", path)
+                os.startfile(path + command)
             if command == "exit":
                 sys.exit(int(arg))
             if command == "echo":
