@@ -52,7 +52,7 @@ def main():
             print(f"{command}: command not found")
         else:
             newPath = checkPath(path, command)
-            if newPath != "invalid": 
+            if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
                 pwd = newPath
                 os.system(command + " " + arg)
