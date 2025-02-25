@@ -52,7 +52,7 @@ def main():
             newPath = checkPath(path, command)
             if newPath != "invalid": 
                 #print(command, "in path ", path)
-                pwd = newPath
+                pwd.replace(pwd, newPath)
                 os.system(command + " " + arg)
             elif command == "pwd":
                 print(pwd)
@@ -62,7 +62,7 @@ def main():
                 sys.stdout.write(arg + "\n")
             elif command == "type":
                 newPath = checkPath(path, arg)
-                pwd = newPath
+                pwd.replace(pwd, newPath)
                 if arg in d.keys():
                     print(f"{arg} is a shell {d.get(arg)}")
                 elif not newPath == "invalid":
