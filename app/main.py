@@ -55,7 +55,6 @@ def main():
         pwd = os.getcwd()
         sys.stdout.write("$ ")
         command = input()
-        command = command.replace("'", "")
         isValid, command, arg = checkValidCommand(path, command)
         if not isValid:
             print(f"{command}: command not found")
