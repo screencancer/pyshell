@@ -7,7 +7,8 @@ d = {
     "exit": "builtin",
     "echo": "builtin",
     "type": "builtin",
-    "pwd": "builtin"
+    "pwd": "builtin",
+    "cd": "builtin"
 }
 
 
@@ -37,13 +38,19 @@ def checkValidCommand(path, command):
     else:
         return False, command[0], None
 
+def checkIfValidDirectory(arg):
+    try:
+        os.chdir(arg)
+        return arg
+    except:
+        print(f"cd: {arg}: No such file or directory")
 
 def main():
-    pwd = "/app"
     path = os.environ['PATH']
     exit = False
 
     while True:
+        pwd = os.getcwd
         sys.stdout.write("$ ")
         command = input()
         isValid, command, arg = checkValidCommand(path, command)
@@ -53,10 +60,12 @@ def main():
             newPath = checkPath(path, command)
             if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
-                pwd = newPath
+                #pwd = newPath
                 os.system(command + " " + arg)
             elif command == "pwd":
                 print(pwd)
+            elif command == "cd":
+                pwd = arg
             elif command == "exit":
                 sys.exit(int(arg))
             elif command == "echo":
