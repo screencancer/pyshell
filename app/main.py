@@ -20,7 +20,7 @@ def checkPath(path, arg):
     for dirs in directories:
         if os.path.exists(dirs):
             listTest = os.listdir(dirs)
-        print(dirs, listTest)
+        #print(dirs, listTest)
         for file in listTest:
             if os.path.isdir(file):
                 directories.append(file)
@@ -36,7 +36,7 @@ def quotationHandler(command: str):
     #print(firstInstanceIndex, secondInstanceIndex)
     arg = command[secondInstanceIndex + 1:len(command)]
     arg = arg.strip()
-    command = command[firstInstanceIndex+1:secondInstanceIndex-1]
+    command = command[firstInstanceIndex+1:secondInstanceIndex]
     commandList = [command, arg]
     return commandList
 
