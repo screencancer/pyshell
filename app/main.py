@@ -14,13 +14,14 @@ d = {
 #Check PATH directory for executables if the exe is not in any path it will return invalid.
 def checkPath(path, arg):
     directories = str(path).split(":")
-    print(directories, "all directories")
+    #print(path)
+    #print(directories, "all directories")
     for dirs in directories:
         if os.path.exists(dirs):
             listTest = os.listdir(dirs)
-        print(dirs, listTest)
+        #print(dirs, listTest)
         for file in listTest:
-            print(file, "file is in ", dirs)
+            #print(file, "file is in ", dirs)
             if file == arg:
                 return dirs
     return "invalid"
