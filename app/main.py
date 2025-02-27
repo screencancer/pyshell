@@ -18,9 +18,9 @@ def checkPath(path, arg):
     for dirs in directories:
         if os.path.exists(dirs):
             listTest = os.listdir(dirs)
-        # print(dirs, listTest)
+        print(dirs, listTest)
         for file in listTest:
-            # print(file, "file is in ", dirs)
+            print(file, "file is in ", dirs)
             if file == arg:
                 return dirs
     return "invalid"
