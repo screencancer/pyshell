@@ -54,7 +54,7 @@ def checkValidCommand(path, command: str):
     elif len(command) == 2 and checkPath(path, command[0]) != "invalid":
         return True, command[0], command[1]
     elif len(command) == 1 and checkPath(path, command[0]) != "invalid":
-        return True, command[0], command[1]
+        return True, command[0], None
     else:
         return False, command[0], None
 
