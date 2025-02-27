@@ -29,7 +29,7 @@ def quotationHandler(command: str):
     operand = command[0]
     firstInstanceIndex = command.find(operand)
     secondInstanceIndex = command.find(operand, firstInstanceIndex + 1)
-    print(firstInstanceIndex, secondInstanceIndex)
+    #print(firstInstanceIndex, secondInstanceIndex)
     arg = command[secondInstanceIndex + 1:len(command)]
     arg = arg.strip()
     command = command[firstInstanceIndex+1:secondInstanceIndex]
@@ -41,6 +41,8 @@ def checkValidCommand(path, command: str):
     commandIsQuoted = False
     if command.startswith('"') or command.startswith("'"):
         command = quotationHandler(command)
+        #print(command[0])
+        #print(command[1])
         
     else:
         command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER?
