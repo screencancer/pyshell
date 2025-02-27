@@ -25,14 +25,25 @@ def checkPath(path, arg):
                 return dirs
     return "invalid"
 
-def quotationHandler(command):
-    ...
+def quotationHandler(command: str):
+    operand = command[0]
+    firstInstanceIndex = command.find(operand)
+    secondInstanceIndex = command.find(operand, firstInstanceIndex + 1)
+    print(firstInstanceIndex, secondInstanceIndex)
+    arg = command[secondInstanceIndex + 1:len(command)]
+    arg = arg.strip()
+    command = command[firstInstanceIndex+1:secondInstanceIndex]
+    commandList = [command, arg]
+    return commandList
 
 #Check if the command given is invalid
 def checkValidCommand(path, command: str):
+    commandIsQuoted = False
     if command.startswith('"') or command.startswith("'"):
         command = quotationHandler(command)
-    command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER?
+        
+    else:
+        command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER?
     # print(command[0], d.values())
     # Check if command is in builtin dictionary or checkPath doesnt return invalid meaning it is on PATH
     if command[0] in d.keys() and len(command) == 2:
