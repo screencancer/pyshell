@@ -36,7 +36,7 @@ def quotationHandler(command: str):
     #print(firstInstanceIndex, secondInstanceIndex)
     arg = command[secondInstanceIndex + 1:len(command)]
     arg = arg.strip()
-    command = command[firstInstanceIndex:secondInstanceIndex+1]
+    command = command[firstInstanceIndex+1:secondInstanceIndex-1]
     commandList = [command, arg]
     return commandList
 
