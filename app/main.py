@@ -22,6 +22,8 @@ def checkPath(path, arg):
             listTest = os.listdir(dirs)
         #print(dirs, listTest)
         for file in listTest:
+            if file is dir:
+                print("file is dir")
             #print(file, "file is in ", dirs)
             if file == arg:
                 return dirs
