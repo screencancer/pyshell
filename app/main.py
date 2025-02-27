@@ -20,7 +20,7 @@ def checkPath(path, arg):
     for dirs in directories:
         if os.path.exists(dirs):
             listTest = os.listdir(dirs)
-        #print(dirs, listTest)
+        print(dirs, listTest)
         for file in listTest:
             if os.path.isdir(file):
                 directories = directories.append(file)
