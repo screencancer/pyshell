@@ -42,10 +42,9 @@ def checkValidCommand(path, command: str):
     if command.startswith('"') or command.startswith("'"):
         command = quotationHandler(command)
         #print(command[0])
-        #print(command[1])
-        
+        #print(command[1])  
     else:
-        command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER?
+        command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER? 
     # print(command[0], d.values())
     # Check if command is in builtin dictionary or checkPath doesnt return invalid meaning it is on PATH
     if command[0] in d.keys() and len(command) == 2:
@@ -53,6 +52,8 @@ def checkValidCommand(path, command: str):
     elif command[0] in d.keys() and len(command) == 1:
         return True, command[0], None
     elif len(command) == 2 and checkPath(path, command[0]) != "invalid":
+        return True, command[0], command[1]
+    elif len(command) == 1 and checkPath(path, command[0]) != "invalid":
         return True, command[0], command[1]
     else:
         return False, command[0], None
