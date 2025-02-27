@@ -23,7 +23,7 @@ def checkPath(path, arg):
         #print(dirs, listTest)
         for file in listTest:
             if os.path.isdir(file):
-                print("file is dir")
+                directories.append(file)
             #print(file, "file is in ", dirs)
             if file == arg:
                 return dirs
