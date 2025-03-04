@@ -104,6 +104,7 @@ def main():
         sys.stdout.write("$ ")
         command = input()
         isValid, command, arg, path, commandWithQuotes = checkValidCommand(path, command)
+        print(arg)
         if not isValid:
             print(f"{command}: command not found")
         else:
