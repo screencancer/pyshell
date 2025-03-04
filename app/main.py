@@ -112,7 +112,8 @@ def main():
             if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
                 #pwd = newPath
-                os.system(command + " " + arg)
+                os.path.curdir = arg
+                os.system(command)
             elif command == "pwd":
                 print(pwd)
             elif command == "cd":
