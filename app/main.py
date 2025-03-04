@@ -103,7 +103,9 @@ def main():
             print(commandWithQuotes != "")
             if commandWithQuotes != "":
                 #print(f"checking for {commandWithQuotes} in {path}")
-                os.system(arg + "/" + commandWithQuotes)
+                os.chdir(arg)
+                os.system(command)
+                newPath = os.curdir
             else:
                 #print(f"checking for {command} in {path}")
                 newPath = checkPath(path, command)
@@ -112,8 +114,7 @@ def main():
             if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
                 #pwd = newPath
-                os.path.curdir = arg
-                os.system(command)
+                os.system(command + " " + arg)
             elif command == "pwd":
                 print(pwd)
             elif command == "cd":
