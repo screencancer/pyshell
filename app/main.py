@@ -11,13 +11,7 @@ d = {
     "cat": "builtin"
 }
 
-def iterateSubfolder(path, arg, file):
-    #print(os.listdir(path))
-    if arg in os.listdir(path):
-        #print("file in dir")
-        return arg
-    else:
-        return None
+#Program will be run with command then file path if not directly in path
 
 #Check PATH directory for executables if the exe is not in any path it will return invalid.
 def checkPath(path, arg):
@@ -32,10 +26,6 @@ def checkPath(path, arg):
         for file in listTest:
             #Not getting custom dir? Not getting subfolders
             #print("Check if", dirs + "/" + file, " is a dir")
-            if os.path.isdir(dirs + "/" + file):
-                tempPath = dirs + "/" + file
-                #print(f"{file} isdir")
-                file = iterateSubfolder(tempPath, arg, file)
             #print(file, "file is in ", dirs)
             if file == arg:
                 return dirs
@@ -70,6 +60,7 @@ def checkValidCommand(path, command: str):
         command = str(command).split(" ", 1) #maybe split it into quote and then split the space AFTER? 
     # print(command[0], d.values())
     # Check if command is in builtin dictionary or checkPath doesnt return invalid meaning it is on PATH
+
     if command[0] in d.keys() and len(command) == 2:
         return True, command[0], command[1], path, commandWithQuotes
     elif command[0] in d.keys() and len(command) == 1:
@@ -112,7 +103,7 @@ def main():
             #Return a path?
             if commandWithQuotes != "":
                 #print(f"checking for {commandWithQuotes} in {path}")
-                newPath = checkPath(path, commandWithQuotes)
+                newPath = checkPath(arg, commandWithQuotes)
             else:
                 #print(f"checking for {command} in {path}")
                 newPath = checkPath(path, command)
