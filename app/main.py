@@ -102,7 +102,7 @@ def main():
             #Return a path?
             if commandWithQuotes != "":
                 #print(f"checking for {commandWithQuotes} in {path}")
-                newPath = checkPath(arg, commandWithQuotes)
+                os.system(arg + "/" + commandWithQuotes)
             else:
                 #print(f"checking for {command} in {path}")
                 newPath = checkPath(path, command)
