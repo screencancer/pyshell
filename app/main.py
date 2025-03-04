@@ -103,9 +103,10 @@ def main():
             print(commandWithQuotes != "")
             if commandWithQuotes != "":
                 #print(f"checking for {commandWithQuotes} in {path}")
-                os.chdir(arg)
-                os.system(command)
-                newPath = os.curdir
+                if(os.path.exists(arg)):
+                    os.chdir(arg)
+                    os.system(command)
+                    newPath = os.curdir
             else:
                 #print(f"checking for {command} in {path}")
                 newPath = checkPath(path, command)
