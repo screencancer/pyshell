@@ -58,6 +58,10 @@ def checkValidCommand(path, command: str):
     if command.startswith('"') or command.startswith("'"):
         command = quotationHandler(command)
         commandIsQuoted = True
+
+        #if Quoted make sure to COMPARE using file AND RUN using 
+        # 'file'. ;-; send help
+
         #print(command[0])
         #print(command[1])  
     else:
@@ -73,7 +77,7 @@ def checkValidCommand(path, command: str):
     elif len(command) == 1 and checkPath(path, command[0]) != "invalid":
         return True, command[0], None, commandIsQuoted
     else:
-        return False, command[0], None
+        return False, command[0], None, False
 
 #Check if path is valid if so then cd should work
 def checkIfValidDirectory(arg):
