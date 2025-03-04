@@ -100,7 +100,7 @@ def main():
         else:
             #New path causing issues in case where in sub directory,
             #Return a path?
-            print(commandWithQuotes)
+            print(commandWithQuotes != "")
             if commandWithQuotes != "":
                 #print(f"checking for {commandWithQuotes} in {path}")
                 os.system(arg + "/" + commandWithQuotes)
