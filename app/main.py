@@ -48,15 +48,17 @@ def quotationHandler(command: str):
     #print(firstInstanceIndex, secondInstanceIndex)
     arg = command[secondInstanceIndex + 1:len(command)]
     arg = arg.strip()
+    commandWithQuotes = command[firstInstanceIndex:secondInstanceIndex+1]
     command = command[firstInstanceIndex+1:secondInstanceIndex]
     commandList = [command, arg]
-    return commandList
+    return commandList, commandWithQuotes
 
 #Check if the command given is invalid
 def checkValidCommand(path, command: str):
     commandIsQuoted = False
+    commandWithQuotes = ""
     if command.startswith('"') or command.startswith("'"):
-        command = quotationHandler(command)
+        command, commandWithQuotes = quotationHandler(command)
         commandIsQuoted = True
 
         #if Quoted make sure to COMPARE using file AND RUN using 
@@ -69,15 +71,22 @@ def checkValidCommand(path, command: str):
     # print(command[0], d.values())
     # Check if command is in builtin dictionary or checkPath doesnt return invalid meaning it is on PATH
     if command[0] in d.keys() and len(command) == 2:
-        return True, command[0], command[1]
+        return True, command[0], command[1], path, commandWithQuotes
     elif command[0] in d.keys() and len(command) == 1:
-        return True, command[0], None
+        print(commandWithQuotes, "return from1 ", command[0])
+        return True, command[0], None, path, commandWithQuotes
     elif len(command) == 2 and checkPath(path, command[0]) != "invalid":
-        return True, command[0], command[1], commandIsQuoted
+        if(commandIsQuoted):
+            command[0] = commandWithQuotes
+        print("should be true")
+        return True, command[0], command[1], path, commandWithQuotes
     elif len(command) == 1 and checkPath(path, command[0]) != "invalid":
-        return True, command[0], None, commandIsQuoted
+        if(commandIsQuoted):
+            command[0] = commandWithQuotes
+        return True, command[0], None, path, commandWithQuotes
     else:
-        return False, command[0], None, False
+        print(commandWithQuotes, "return from4 ", command[0])
+        return False, command[0], None, path, commandWithQuotes
 
 #Check if path is valid if so then cd should work
 def checkIfValidDirectory(arg):
@@ -97,11 +106,18 @@ def main():
         pwd = os.getcwd()
         sys.stdout.write("$ ")
         command = input()
-        isValid, command, arg, isQuoted = checkValidCommand(path, command)
+        isValid, command, arg, path, commandWithQuotes = checkValidCommand(path, command)
         if not isValid:
             print(f"{command}: command not found")
         else:
-            newPath = checkPath(path, command)
+            #New path causing issues in case where in sub directory,
+            #Return a path?
+            if commandWithQuotes != "":
+                print(f"checking for {commandWithQuotes} in {path}")
+                newPath = checkPath(path, commandWithQuotes)
+            else:
+                print(f"checking for {command} in {path}")
+                newPath = checkPath(path, command)
             #potentially make this a function?
             print(newPath, " ", command)
             if newPath != "invalid" and arg != None: 
