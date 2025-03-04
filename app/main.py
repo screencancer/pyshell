@@ -12,7 +12,12 @@ d = {
 }
 
 def iterateSubfolder(path, arg, file):
-    ...
+    print(os.listdir(path))
+    if arg in os.listdir(path):
+        #print("file in dir")
+        return arg
+    else:
+        return None
 
 #Check PATH directory for executables if the exe is not in any path it will return invalid.
 def checkPath(path, arg):
@@ -26,9 +31,11 @@ def checkPath(path, arg):
         #print(dirs, listTest)
         for file in listTest:
             #Not getting custom dir? Not getting subfolders
-            if os.path.isdir(file):
-                print(f"{file} isdir")
-                iterateSubfolder(path, arg, file)
+            #print("Check if", dirs + "/" + file, " is a dir")
+            if os.path.isdir(dirs + "/" + file):
+                tempPath = dirs + "/" + file
+                #print(f"{file} isdir")
+                file = iterateSubfolder(tempPath, arg, file)
             #print(file, "file is in ", dirs)
             if file == arg:
                 return dirs
