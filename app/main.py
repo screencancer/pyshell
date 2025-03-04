@@ -14,7 +14,7 @@ d = {
 def iterateSubfolder(path, arg, file):
     print(os.listdir(path))
     if arg in os.listdir(path):
-        print("file in dir")
+        #print("file in dir")
         return arg
     else:
         return None
@@ -22,7 +22,7 @@ def iterateSubfolder(path, arg, file):
 #Check PATH directory for executables if the exe is not in any path it will return invalid.
 def checkPath(path, arg):
     directories = str(path).split(":")
-    print(f"checking for{arg} in {path}")
+    #print(f"checking for{arg} in {path}")
     #Is path right?
     #print(directories, "all directories")
     for dirs in directories:
@@ -34,7 +34,7 @@ def checkPath(path, arg):
             #print("Check if", dirs + "/" + file, " is a dir")
             if os.path.isdir(dirs + "/" + file):
                 tempPath = dirs + "/" + file
-                print(f"{file} isdir")
+                #print(f"{file} isdir")
                 file = iterateSubfolder(tempPath, arg, file)
             #print(file, "file is in ", dirs)
             if file == arg:
