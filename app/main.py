@@ -57,6 +57,7 @@ def checkValidCommand(path, command: str):
     commandIsQuoted = False
     if command.startswith('"') or command.startswith("'"):
         command = quotationHandler(command)
+        commandIsQuoted = True
         #print(command[0])
         #print(command[1])  
     else:
@@ -68,9 +69,9 @@ def checkValidCommand(path, command: str):
     elif command[0] in d.keys() and len(command) == 1:
         return True, command[0], None
     elif len(command) == 2 and checkPath(path, command[0]) != "invalid":
-        return True, command[0], command[1]
+        return True, command[0], command[1], commandIsQuoted
     elif len(command) == 1 and checkPath(path, command[0]) != "invalid":
-        return True, command[0], None
+        return True, command[0], None, commandIsQuoted
     else:
         return False, command[0], None
 
@@ -92,12 +93,13 @@ def main():
         pwd = os.getcwd()
         sys.stdout.write("$ ")
         command = input()
-        isValid, command, arg = checkValidCommand(path, command)
+        isValid, command, arg, isQuoted = checkValidCommand(path, command)
         if not isValid:
             print(f"{command}: command not found")
         else:
             newPath = checkPath(path, command)
             #potentially make this a function?
+            print(newPath, " ", command)
             if newPath != "invalid" and arg != None: 
                 #print(command, "in path ", path)
                 #pwd = newPath
